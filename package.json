@@ -1,0 +1,19 @@
+{
+  "name": "selenium-basics",
+  "version": "1.0.0",
+  "description": "project for learning selenium web drive basics",
+  "main": "index.js",
+  "devDependencies": {
+    "jasmine": "^3.7.0",
+    "selenium-webdriver": "^4.0.0-beta.3"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "author": "Marta Lenartovich",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^91.0.1",
+    "geckodriver": "^2.0.0"
+  }
+}
