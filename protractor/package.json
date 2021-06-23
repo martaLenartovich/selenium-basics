@@ -4,7 +4,7 @@
   "description": "test search job functionality using protractor",
   "main": "index.js",
   "scripts": {
-    "test": "tsc"
+    "test": "protractor config.js"
   },
   "author": "",
   "license": "ISC",
