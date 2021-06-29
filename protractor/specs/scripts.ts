@@ -1,7 +1,7 @@
 import { browser, protractor } from "protractor";
 import {} from "jasmine";
-import { HomePage } from "../utils/pages/home_page";
-import { CareersPage } from "../utils/pages/careers_page";
+import { HomePage } from "../utils/pages/home_page/home_page";
+import { CareersPage } from "../utils/pages/careers_page/careers_page";
 
 const careersPage = new CareersPage();
 const homePage = new HomePage();
@@ -13,11 +13,8 @@ describe("search job test", function () {
     browser.waitForAngularEnabled(false);
     await homePage.open();
     await browser.manage().window().maximize();
-    await careersPage.open();
-    browser.executeScript(
-      "arguments[0].scrollIntoView();",
-      CareersPage.jobSearchFilterForm.getWebElement()
-    );
+    await CareersPage.careersButton.click();
+    careersPage.scrollToJobSearchFilterForm();
     console.log('1. Enter "Software Testing Engineer" in Keyword field');
     await CareersPage.keyword.sendKeys("Software Testing Engineer");
     console.log(
@@ -38,7 +35,6 @@ describe("search job test", function () {
     const counterText = await CareersPage.counter.getText();
     expect(labelSelectedText + counterText).toEqual("Selected:1");
     console.log('4. Click "Find" button');
-     
     expect(await CareersPage.findButton.isEnabled()).toEqual(true);
     await CareersPage.findButton.click(); 
     expect(CareersPage.resultLine).toBeDefined();

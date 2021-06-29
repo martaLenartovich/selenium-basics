@@ -1,14 +1,9 @@
 {
     "compilerOptions": {
-        //ts "module":"commonjs",
-        "noImplicitAny": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "types": [
-            "jasmine"
-        ]
+      "lib": ["es6"],
+      "strict": true,
+      "outDir" : "output_js",
+      "types" : ["jasmine", "node"]
     },
     "typeRoots": [
         "node_modules/@types"
