@@ -39,6 +39,7 @@ exports.__esModule = true;
 var protractor_1 = require("protractor");
 var home_page_1 = require("../utils/pages/home_page/home_page");
 var careers_page_1 = require("../utils/pages/careers_page/careers_page");
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 100 * 1000;
 var careersPage = new careers_page_1.CareersPage();
 var homePage = new home_page_1.HomePage();
 describe("search job test", function () {
@@ -49,7 +50,6 @@ describe("search job test", function () {
                 switch (_b.label) {
                     case 0:
                         EC = protractor_1.protractor.ExpectedConditions;
-                        protractor_1.browser.manage().timeouts().pageLoadTimeout(20000);
                         protractor_1.browser.waitForAngularEnabled(false);
                         return [4 /*yield*/, homePage.open()];
                     case 1:
@@ -57,7 +57,7 @@ describe("search job test", function () {
                         return [4 /*yield*/, protractor_1.browser.manage().window().maximize()];
                     case 2:
                         _b.sent();
-                        return [4 /*yield*/, careers_page_1.CareersPage.careersButton.click()];
+                        return [4 /*yield*/, protractor_1.browser.actions().click(careers_page_1.CareersPage.careersButton).perform()];
                     case 3:
                         _b.sent();
                         careersPage.scrollToJobSearchFilterForm();
@@ -66,7 +66,7 @@ describe("search job test", function () {
                     case 4:
                         _b.sent();
                         console.log('2. Select "All Cities in Belarus" option in Location dropdown');
-                        return [4 /*yield*/, careers_page_1.CareersPage.citiesDropdownArrow.click()];
+                        return [4 /*yield*/, protractor_1.browser.actions().click(careers_page_1.CareersPage.citiesDropdownArrow).perform()];
                     case 5:
                         _b.sent();
                         expect(careers_page_1.CareersPage.chinaCheckbox).toBeDefined();
@@ -77,7 +77,7 @@ describe("search job test", function () {
                     case 7:
                         _b.sent();
                         console.log('3. Select "Software Test Engineering" skill in Skills dropdown');
-                        return [4 /*yield*/, careers_page_1.CareersPage.skillsDropdownField.click()];
+                        return [4 /*yield*/, protractor_1.browser.executeScript("arguments[0].click()", careers_page_1.CareersPage.skillsDropdownField)];
                     case 8:
                         _b.sent();
                         return [4 /*yield*/, protractor_1.browser.wait(EC.elementToBeClickable(careers_page_1.CareersPage.skillsDropdown), 5000)];
@@ -103,6 +103,9 @@ describe("search job test", function () {
                         _a.apply(void 0, [_b.sent()]).toEqual(true);
                         return [4 /*yield*/, careers_page_1.CareersPage.findButton.click()];
                     case 15:
+                        _b.sent();
+                        return [4 /*yield*/, protractor_1.browser.executeScript("arguments[0].style.backgroundColor = '" + "red" + "'", careers_page_1.CareersPage.findButton)];
+                    case 16:
                         _b.sent();
                         expect(careers_page_1.CareersPage.resultLine).toBeDefined();
                         return [2 /*return*/];
